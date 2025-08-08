@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.App-header {
+  text-align: center;
+}
+
+.App-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

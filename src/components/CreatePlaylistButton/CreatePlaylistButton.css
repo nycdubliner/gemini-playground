@@ -1,0 +1,16 @@
+.create-playlist-button {
+  padding: 1rem 2rem;
+  border-radius: 500px;
+  border: none;
+  background-color: #1db954;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  align-self: center;
+}
+
+.create-playlist-button:hover {
+  background-color: #1ed760;
+}
