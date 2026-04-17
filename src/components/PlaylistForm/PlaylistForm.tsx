@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PlaylistForm.css';
 
-const PlaylistForm: React.FC = () => {
+interface PlaylistFormProps {
+  onPlaylistDetailsChange: (details: { name: string; description: string }) => void;
+}
+
+const PlaylistForm: React.FC<PlaylistFormProps> = ({ onPlaylistDetailsChange }) => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    onPlaylistDetailsChange({ name, description });
+  }, [name, description, onPlaylistDetailsChange]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+  };
+
   return (
     <div className="playlist-form">
-      <input type="text" placeholder="Playlist Name" className="input-field" />
-      <textarea placeholder="Playlist Description" className="textarea-field"></textarea>
-      <div className="public-private-toggle">
-        <label>
-          <input type="radio" name="privacy" value="private" defaultChecked />
-          Private
-        </label>
-        <label>
-          <input type="radio" name="privacy" value="public" />
-          Public
-        </label>
-      </div>
+      <input
+        type="text"
+        placeholder="Playlist Name"
+        className="input-field"
+        value={name}
+        onChange={handleNameChange}
+      />
+      <textarea
+        placeholder="Playlist Description"
+        className="textarea-field"
+        value={description}
+        onChange={handleDescriptionChange}
+      ></textarea>
     </div>
   );
 };
